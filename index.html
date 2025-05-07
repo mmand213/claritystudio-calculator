@@ -3,45 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Business Pricing Calculator</title>
+  <title>IT Team Projects</title>
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-  <div class="calculator-container">
-    <div class="calculator-header">
-      <h2>Estimate Your Session</h2>
-      <p>Adjust the sliders to match your needs.</p>
-    </div>
+  <div class="container">
+    <header>
+      <h1><span class="material-icons">dns</span> IT Infrastructure Projects</h1>
+      <button id="add-project" class="btn-primary">+ New Project</button>
+    </header>
 
-    <div class="input-group">
-      <label for="session-hours">Session Duration (Hours)</label>
-      <input type="range" id="session-hours" min="1" max="8" value="2" step="0.5">
-      <span class="value-display">2 hrs</span>
-      <p class="price-note">$150–250/hr</p>
-    </div>
+    <div class="board">
+      <!-- To Do -->
+      <div class="column" id="todo">
+        <h2>To Do</h2>
+        <div class="tasks" data-status="todo"></div>
+      </div>
 
-    <div class="input-group">
-      <label for="edit-count">Images to Edit</label>
-      <input type="number" id="edit-count" min="0" max="100" value="10">
-      <p class="price-note">$50/image</p>
-    </div>
+      <!-- In Progress -->
+      <div class="column" id="progress">
+        <h2>In Progress</h2>
+        <div class="tasks" data-status="progress"></div>
+      </div>
 
-    <div class="input-group">
-      <label for="album-tier">Album Type</label>
-      <select id="album-tier">
-        <option value="0">None</option>
-        <option value="100">Standard ($100)</option>
-        <option value="200">Premium ($200)</option>
-        <option value="300">Luxury ($300)</option>
-      </select>
-    </div>
-
-    <div class="total-section">
-      <h3>Estimated Total</h3>
-      <p id="total-price">$700</p>
-      <button class="cta-button">Book Now</button>
+      <!-- Done -->
+      <div class="column" id="done">
+        <h2>Done</h2>
+        <div class="tasks" data-status="done"></div>
+      </div>
     </div>
   </div>
+
+  <!-- Project Modal (Hidden) -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Add New Project</h2>
+      <input type="text" id="project-title" placeholder="Project Name">
+      <textarea id="project-desc" placeholder="Description"></textarea>
+      <input type="date" id="project-deadline">
+      <button id="save-project" class="btn-primary">Save</button>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
