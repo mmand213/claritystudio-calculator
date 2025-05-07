@@ -3,50 +3,176 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IT Team Projects</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>IT Team Projects | Monday.com Style</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #7367F0;
+      --todo: #FF9F43;
+      --progress: #00CFE8;
+      --done: #28C76F;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #F8F8F8;
+      margin: 0;
+    }
+    .header {
+      background: white;
+      padding: 15px 25px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+    }
+    .logo {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 1.5rem;
+    }
+    .add-project {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      margin-left: auto;
+      cursor: pointer;
+    }
+    .board {
+      display: flex;
+      padding: 20px;
+      gap: 20px;
+      min-height: calc(100vh - 70px);
+    }
+    .column {
+      flex: 1;
+      background: white;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .column-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .column-title {
+      font-weight: 600;
+      margin-right: 10px;
+    }
+    .task-count {
+      background: #F3F3F3;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+    }
+    .task {
+      background: white;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      border-left: 3px solid var(--todo);
+      cursor: grab;
+    }
+    .task-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .task-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      font-size: 0.8rem;
+    }
+    .deadline {
+      color: #FF5C5C;
+      font-weight: 500;
+    }
+    .assignees {
+      display: flex;
+    }
+    .avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #E4E6EF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: -5px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1><span class="material-icons">dns</span> IT Infrastructure Projects</h1>
-      <button id="add-project" class="btn-primary">+ New Project</button>
-    </header>
+  <div class="header">
+    <div class="logo">IT Projects</div>
+    <button class="add-project">
+      <i class="fas fa-plus"></i> New Project
+    </button>
+  </div>
 
-    <div class="board">
-      <!-- To Do -->
-      <div class="column" id="todo">
-        <h2>To Do</h2>
-        <div class="tasks" data-status="todo"></div>
+  <div class="board">
+    <div class="column">
+      <div class="column-header">
+        <div class="column-title">To Do</div>
+        <div class="task-count">3</div>
       </div>
-
-      <!-- In Progress -->
-      <div class="column" id="progress">
-        <h2>In Progress</h2>
-        <div class="tasks" data-status="progress"></div>
+      <div class="task">
+        <div class="task-title">Server Migration</div>
+        <div class="task-desc">Move legacy servers to AWS</div>
+        <div class="task-footer">
+          <span class="deadline"><i class="far fa-clock"></i> Jun 30</span>
+          <div class="assignees">
+            <div class="avatar">JD</div>
+            <div class="avatar">SM</div>
+          </div>
+        </div>
       </div>
+    </div>
 
-      <!-- Done -->
-      <div class="column" id="done">
-        <h2>Done</h2>
-        <div class="tasks" data-status="done"></div>
+    <div class="column">
+      <div class="column-header">
+        <div class="column-title">In Progress</div>
+        <div class="task-count">2</div>
+      </div>
+      <div class="task" style="border-left-color: var(--progress);">
+        <div class="task-title">Firewall Upgrade</div>
+        <div class="task-desc">Deploy new Palo Alto rules</div>
+        <div class="task-footer">
+          <span class="deadline"><i class="far fa-clock"></i> Jun 15</span>
+          <div class="assignees">
+            <div class="avatar">TP</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="column-header">
+        <div class="column-title">Done</div>
+        <div class="task-count">5</div>
+      </div>
+      <div class="task" style="border-left-color: var(--done);">
+        <div class="task-title">VPN Rollout</div>
+        <div class="task-desc">Global AnyConnect deployment</div>
+        <div class="task-footer">
+          <span><i class="far fa-check-circle"></i> Completed</span>
+          <div class="assignees">
+            <div class="avatar">AL</div>
+            <div class="avatar">RK</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
-  <!-- Project Modal (Hidden) -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Add New Project</h2>
-      <input type="text" id="project-title" placeholder="Project Name">
-      <textarea id="project-desc" placeholder="Description"></textarea>
-      <input type="date" id="project-deadline">
-      <button id="save-project" class="btn-primary">Save</button>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
